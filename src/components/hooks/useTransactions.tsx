@@ -31,13 +31,17 @@ export function TransactionsProvider ({children} : TransactionsProviderProps) {
         api.get('transactions')
         .then(res => {
             setTransactions(res.data.transactions)
-        })
+       })
+
+       return () => {
+        setTransactions([])
+       }
     } , [])
 
     async function createTransaction(transactionInput : TransactionInput) {
        const response = await api.post('/transactions' , {
             ...transactionInput ,
-            createdAt: new Date(),
+            createdAt: new Date().toISOString(),
        });
 
        const transactionsCreated = response.data.transactions;

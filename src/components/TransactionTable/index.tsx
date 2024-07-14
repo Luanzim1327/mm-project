@@ -4,6 +4,14 @@ import { Container } from "./styles";
 
 export function TransactionsTable () {
     const { transactions } = useTransactions();
+    const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+    };
 
     return(
         <Container>
@@ -29,9 +37,7 @@ export function TransactionsTable () {
                                 </td>
                                 <td>{transaction.category}</td>
                                 <td>
-                                    {new Intl.DateTimeFormat('pt-BR').format(
-                                        new Date(transaction.createdAt)
-                                    )}
+                                    {new Intl.DateTimeFormat('pt-BR', options).format(new Date(transaction.createdAt))}
                                 </td>
                             </tr>
                     ))}

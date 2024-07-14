@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { Model, createServer } from 'miragejs';
-import './index.css'
 
 createServer({
   models: {
